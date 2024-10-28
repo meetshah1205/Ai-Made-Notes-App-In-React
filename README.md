@@ -29,7 +29,8 @@ Follow these instructions to set up and run CreaNote locally.
    ```bash
    git clone https://github.com/yourusername/CreaNote.git
    ```
-  ```cd``` into the folders to continue
+  ```cd``` into the folders to continue.
+  
 2. Install dependencies
   ```bash
 npm install
