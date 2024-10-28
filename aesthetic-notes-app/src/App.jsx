@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './App.css';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const App = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,6 +36,15 @@ const App = () => {
         setNotes(newNotes);
     };
 
+    const handleOnDragEnd = (result) => {
+        if (!result.destination) return; // If dropped outside
+
+        const reorderedNotes = Array.from(notes);
+        const [removed] = reorderedNotes.splice(result.source.index, 1);
+        reorderedNotes.splice(result.destination.index, 0, removed);
+        setNotes(reorderedNotes);
+    };
+
     return (
         <div className={`app ${isDarkMode ? 'dark' : ''}`}>
             <h1>Aesthetic Notes App</h1>
@@ -57,15 +67,35 @@ const App = () => {
                 />
                 <button type="submit">Add Note</button>
             </form>
-            <div className="note-list">
-                {notes.map((note, index) => (
-                    <div className="note" key={index}>
-                        <h3>{note.title}</h3> {/* Note Title */}
-                        <p>{note.text}</p> {/* Note Content */}
-                        <button onClick={() => handleDeleteNote(index)}>Delete</button>
-                    </div>
-                ))}
-            </div>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+                <Droppable droppableId="notes">
+                    {(provided) => (
+                        <div
+                            className="note-list"
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                        >
+                            {notes.map((note, index) => (
+                                <Draggable key={index} draggableId={String(index)} index={index}>
+                                    {(provided) => (
+                                        <div
+                                            className="note"
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                        >
+                                            <h3>{note.title}</h3>
+                                            <p>{note.text}</p>
+                                            <button onClick={() => handleDeleteNote(index)}>Delete</button>
+                                        </div>
+                                    )}
+                                </Draggable>
+                            ))}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
         </div>
     );
 };
