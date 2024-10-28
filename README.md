@@ -11,7 +11,6 @@
 - **Full-Screen Experience**: Designed to provide a full-screen, immersive experience.
 - **Responsive Design**: CreaNote is fully responsive and adapts to various screen sizes.
 
-## 🎨 Preview
 
 
 ## 🚀 Getting Started
