@@ -7,6 +7,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <div class="cursor" style="height: 25px; width: 25px; transition: all ease 0.05s; border-radius: 50%; background-color: #ff7b7b; position: absolute;"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      var body = document.querySelector('body');
+      var crsr = document.querySelector('.cursor')
+      body.addEventListener("mousemove", function(dets) {
+        // console.log(dets)
+        crsr.style.top = dets.y + 'px';
+        crsr.style.left = dets.x + 'px';
+        })
+        
+    </script>
   </body>
 </html>

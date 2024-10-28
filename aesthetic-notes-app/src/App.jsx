@@ -50,7 +50,7 @@ const App = () => {
         reorderedNotes.splice(result.destination.index, 0, removed);
         setNotes(reorderedNotes);
     };
-
+  
     return (
         <div className={`app ${isDarkMode ? 'dark' : ''}`}>
             <h1>Creanote</h1>
