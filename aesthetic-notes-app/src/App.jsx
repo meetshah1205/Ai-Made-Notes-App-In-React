@@ -9,6 +9,7 @@ const App = () => {
     const [notes, setNotes] = useState([]);
     const [noteTitle, setNoteTitle] = useState('');
     const [noteText, setNoteText] = useState('');
+    const [noteColor, setNoteColor] = useState('#ffffff'); // Default color
 
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
@@ -22,12 +23,17 @@ const App = () => {
         setNoteText(e.target.value);
     };
 
+    const handleColorChange = (e) => {
+        setNoteColor(e.target.value);
+    };
+
     const handleAddNote = (e) => {
         e.preventDefault();
         if (noteTitle.trim() && noteText.trim()) {
-            setNotes([...notes, { title: noteTitle, text: noteText }]);
+            setNotes([...notes, { title: noteTitle, text: noteText, color: noteColor }]);
             setNoteTitle('');
             setNoteText('');
+            setNoteColor('#ffffff'); // Reset to default color after adding note
         }
     };
 
@@ -47,7 +53,7 @@ const App = () => {
 
     return (
         <div className={`app ${isDarkMode ? 'dark' : ''}`}>
-            <h1>Aesthetic Notes App</h1>
+            <h1>Creanote</h1>
             <button className="theme-toggle" onClick={toggleTheme}>
                 {isDarkMode ? '🌞 Light Mode' : '🌜 Dark Mode'}
             </button>
@@ -56,7 +62,7 @@ const App = () => {
                     type="text"
                     value={noteTitle}
                     onChange={handleTitleChange}
-                    placeholder="Title"
+                    placeholder="Title..."
                     required
                 />
                 <textarea
@@ -64,6 +70,12 @@ const App = () => {
                     onChange={handleNoteChange}
                     placeholder="Add your note..."
                     required
+                />
+                {/* Color Picker */}
+                <input
+                    type="color"
+                    value={noteColor}
+                    onChange={handleColorChange}
                 />
                 <button type="submit">Add Note</button>
             </form>
@@ -83,6 +95,7 @@ const App = () => {
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
+                                            style={{ backgroundColor: note.color }} // Apply color
                                         >
                                             <h3>{note.title}</h3>
                                             <p>{note.text}</p>
@@ -97,6 +110,7 @@ const App = () => {
                 </Droppable>
             </DragDropContext>
         </div>
+        
     );
 };
 
