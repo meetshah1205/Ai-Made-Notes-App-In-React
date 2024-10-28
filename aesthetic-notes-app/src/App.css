@@ -1,0 +1,197 @@
+/* src/App.css */
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Soft light background */
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles for body */
+.dark {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Light text color for dark mode */
+}
+
+/* Note Form Styles */
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff; /* Form background */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+/* Dark mode styles for form */
+.dark .note-form {
+    background-color: #2a2a2a; /* Dark mode form background */
+}
+
+/* Input and Textarea Styles */
+.note-form input,
+.note-form textarea {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+}
+
+/* Dark mode styles for inputs and textarea */
+.dark .note-form input,
+.dark .note-form textarea {
+    background-color: #3a3a3a; /* Dark mode input background */
+    color: #e0e0e0; /* Light text color */
+    border: 1px solid #555; /* Darker border for inputs */
+}
+
+.note-form input:focus,
+.note-form textarea:focus {
+    border-color: #ff6b6b; /* Focused border color */
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+    outline: none;
+}
+
+/* Dark mode styles for focused inputs and textareas */
+.dark .note-form input:focus,
+.dark .note-form textarea:focus {
+    border-color: #ff6b6b; /* Keep the same focus color */
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+}
+
+/* Button Styles */
+.note-form button {
+    padding: 0.7rem;
+    background-color: #ff6b6b; /* Button color */
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.note-form button:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+    transform: scale(1.05);
+}
+
+/* NoteList Styles */
+.note-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Note Styles */
+.note {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.note:hover {
+    transform: translateY(-4px); /* Elevate note on hover */
+}
+
+.note h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #ff6b6b; /* Note title color */
+}
+
+.note p {
+    font-size: 1rem;
+    color: #555; /* Slightly darker text for content */
+}
+
+/* Delete Button for Notes */
+.note button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.note button:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+    transform: scale(1.05);
+}
+
+/* Dark mode styles for notes */
+.dark .note {
+    background-color: #2a2a2a; /* Dark mode note background */
+    color: #e0e0e0; /* Light text for dark mode */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode styles for buttons */
+.dark .note button {
+    background-color: #ff7b7b; /* Dark mode button color */
+}
+
+.dark .note button:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    padding: 0.7rem 1.2rem; /* Add padding */
+    background-color: #ff6b6b; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    margin-bottom: 1.5rem; /* Space below the button */
+}
+
+/* Hover effects */
+.theme-toggle:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Dark mode styles for the toggle button */
+.dark .theme-toggle {
+    background-color: #ff7b7b; /* Dark mode button color */
+    color: white; /* Light text color for dark mode */
+}
+
+/* Dark mode hover styles */
+.dark .theme-toggle:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+}
+/* Note Styles */
+.note {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+/* Note Title Styles */
+.note h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem; /* Adjust title size as needed */
+    color: #ff6b6b; /* Title color */
+}
+
